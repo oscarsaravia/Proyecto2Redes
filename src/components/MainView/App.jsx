@@ -1,28 +1,28 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
+import {useState} from 'react';
+import CreateRoom from '../CreateRoom/createRoom.jsx';
+import JoinRoom from '../JoinRoom/joinRoom.jsx';
+import FirstView from '../FirstView.jsx';
+
 import './App.css'
 
 function App() {
-
   return (
-    <div className="App">
-      <h1>Bienvenido a Va de Farol!</h1>
-      <h2>Nombre</h2>
-      <input type="text" placeholder="Nombre de usuario" className="css-input"/>
-      <div class="control-group">
-        <label class="control control-checkbox">
-            Crear sala
-                <input type="checkbox"/>
-            <div class="control_indicator"></div>
-        </label>
-        <label class="control control-checkbox">
-            Unirse a sala
-                <input type="checkbox" />
-            <div class="control_indicator"></div>
-        </label>
-    </div>
 
-      <a href="#" className="myButton">Comenzar juego</a>
-    </div>
+    <>
+
+      <Router>
+        <Routes>
+          <Route index element={<FirstView />} />
+          <Route path="/" element={<FirstView/>}></Route>
+          <Route path='/create' element={<CreateRoom />}/>
+          <Route path='/join' element={<JoinRoom />}/>
+        </Routes>
+      </Router>
+
+
+    </>
+
   )
 }
 
