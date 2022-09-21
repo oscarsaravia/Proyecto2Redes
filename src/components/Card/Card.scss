@@ -1,0 +1,293 @@
+.image_properties {
+  width: 12rem;
+  height: 13rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+// BACK CARD //
+.BACK {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/BACK.svg);
+}
+
+// CLUB CARDS //
+.CLUB_A {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-1.svg);
+}
+
+.CLUB_2 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-2.svg);
+}
+
+.CLUB_3{
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-3.svg);
+}
+
+.CLUB_4 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-4.svg);
+}
+
+.CLUB_5 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-5.svg);
+}
+
+.CLUB_6 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-6.svg);
+}
+
+.CLUB_7 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-7.svg);
+}
+
+.CLUB_8 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-8.svg);
+}
+
+.CLUB_9 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-9.svg);
+}
+
+.CLUB_10 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-10.svg);
+}
+
+.CLUB_J {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-11-JACK.svg);
+}
+
+.CLUB_Q {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-12-QUEEN.svg);
+}
+
+.CLUB_K {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/CLUB-13-KING.svg);
+}
+
+// DIAMOND CARDS //
+.DIAMOND_A {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-1.svg);
+}
+
+.DIAMOND_2 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-2.svg);
+}
+
+.DIAMOND_3{
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-3.svg);
+}
+
+.DIAMOND_4 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-4.svg);
+}
+
+.DIAMOND_5 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-5.svg);
+}
+
+.DIAMOND_6 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-6.svg);
+}
+
+.DIAMOND_7 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-7.svg);
+}
+
+.DIAMOND_8 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-8.svg);
+}
+
+.DIAMOND_9 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-9.svg);
+}
+
+.DIAMOND_10 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-10.svg);
+}
+
+.DIAMOND_J {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-11-JACK.svg);
+}
+
+.DIAMOND_Q {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-12-QUEEN.svg);
+}
+
+.DIAMOND_K {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/DIAMOND-13-KING.svg);
+}
+
+// HEART CARDS //
+.HEART_A {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-1.svg);
+}
+
+.HEART_2 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-2.svg);
+}
+
+.HEART_3{
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-3.svg);
+}
+
+.HEART_4 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-4.svg);
+}
+
+.HEART_5 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-5.svg);
+}
+
+.HEART_6 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-6.svg);
+}
+
+.HEART_7 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-7.svg);
+}
+
+.HEART_8 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-8.svg);
+}
+
+.HEART_9 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-9.svg);
+}
+
+.HEART_10 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-10.svg);
+}
+
+.HEART_J {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-11-JACK.svg);
+}
+
+.HEART_Q {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-12-QUEEN.svg);
+}
+
+.HEART_K {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/HEART-13-KING.svg);
+}
+
+// SPADE CARDS //
+.SPADE_A {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-1.svg);
+}
+
+.SPADE_2 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-2.svg);
+}
+
+.SPADE_3{
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-3.svg);
+}
+
+.SPADE_4 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-4.svg);
+}
+
+.SPADE_5 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-5.svg);
+}
+
+.SPADE_6 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-6.svg);
+}
+
+.SPADE_7 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-7.svg);
+}
+
+.SPADE_8 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-8.svg);
+}
+
+.SPADE_9 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-9.svg);
+}
+
+.SPADE_10 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-10.svg);
+}
+
+.SPADE_J {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-11-JACK.svg);
+}
+
+.SPADE_Q {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-12-QUEEN.svg);
+}
+
+.SPADE_K {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/SPADE-13-KING.svg);
+}
+
+// JOKERS //
+.JOKER_1 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/JOKER-1.svg);
+}
+
+.JOKER_2 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/JOKER-2.svg);
+}
+
+.JOKER_3 {
+  @extend .image_properties;
+  background-image: url(../../assets/svg/cards_svg/JOKER-3.svg);
+}
