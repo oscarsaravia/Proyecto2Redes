@@ -41,7 +41,7 @@ async def join_room(_, username):
     }]
   })
   print("Created room: " , room_id)
-  await sio.emit({
+  await sio.emit('room_created', {
     "response": "room_created",
     "code": 200,
     "body": {
