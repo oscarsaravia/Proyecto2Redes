@@ -34,12 +34,12 @@ const FirstView = () => {
           <label class="control control-checkbox">
             Crear sala
             <input type="checkbox" onChange={(e) =>setValueRoom(e.target.checked)} />
-            <div class="control_indicator"></div>
+            <div className="control_indicator"></div>
           </label>
-          <label class="control control-checkbox">
+          <label className="control control-checkbox">
             Unirse a sala
             <input type="checkbox" onChange={(e) =>setValueJoin(e.target.checked)}/>
-            <div class="control_indicator"></div>
+            <div className="control_indicator"></div>
           </label>
         </div>
 
