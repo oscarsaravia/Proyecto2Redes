@@ -5,23 +5,31 @@ import {useState} from 'react';
 const FirstView = () => {
     const [valueRoom, setValueRoom] = useState(false);
     const [valueJoin, setValueJoin] = useState(false);
+    const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
     const handleEvents = () => {
+      if (valueRoom) {
+        navigate('/create', {
+          state: {
+            username: username,
+          }
+        });
+      }
+      if (valueJoin) {
+        navigate('/join');
+      }
+    }
 
-        if (valueRoom) {
-            navigate('/create');
-        }
-        if (valueJoin) {
-            navigate('/join');
-        }}
-
+    const onChange = (e) => {
+      setUsername(e.target.value)
+    }
 
     return(
     <div className="App">
         <h1>Bienvenido a Va de Farol!</h1>
         <h2>Nombre</h2>
-        <input type="text" placeholder="Nombre de usuario" className="css-input" />
+        <input onChange={onChange} type="text" placeholder="Nombre de usuario" className="css-input" />
         <div class="control-group">
           <label class="control control-checkbox">
             Crear sala

@@ -3,12 +3,13 @@ import {useState} from 'react';
 import CreateRoom from '../CreateRoom/createRoom.jsx';
 import JoinRoom from '../JoinRoom/joinRoom.jsx';
 import FirstView from '../FirstView.jsx';
+import { initiateSocket } from '../../websockets/socket'
 
 import './App.css'
 
 function App() {
+  initiateSocket()
   return (
-
     <>
 
       <Router>
