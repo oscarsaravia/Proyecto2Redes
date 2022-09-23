@@ -3,7 +3,11 @@ import { useNavigate} from 'react-router-dom';
 const JoinRoom = () => {
     const navigate = useNavigate();
     const navigateMain = () => {
-        navigate('/game');
+        navigate('/game', {
+            state: {
+                waiting: true,
+            }
+        });
     }
 
     return (
