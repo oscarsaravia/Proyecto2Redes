@@ -1,9 +1,16 @@
 .image_properties {
-  width: 12rem;
-  height: 13rem;
+  width: 6rem;
+  height: 9rem;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: -1rem 0 1rem #000;
+  transition: .4s ease-out;
+  position: relative;
+  left: 2rem;
 }
 
 // BACK CARD //
