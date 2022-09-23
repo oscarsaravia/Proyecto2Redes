@@ -30,8 +30,8 @@ const FirstView = () => {
         <h1>Bienvenido a Va de Farol!</h1>
         <h2>Nombre</h2>
         <input onChange={onChange} type="text" placeholder="Nombre de usuario" className="css-input" />
-        <div class="control-group">
-          <label class="control control-checkbox">
+        <div className="control-group">
+          <label className="control control-checkbox">
             Crear sala
             <input type="checkbox" onChange={(e) =>setValueRoom(e.target.checked)} />
             <div className="control_indicator"></div>
