@@ -8,7 +8,7 @@ const useSession = () => {
   useEffect(() => {
     if (socket) {
       socket.on('room_created', (response) => {
-        console.log(response)
+        // console.log(response)
         setResponse(response)
       })
     }
