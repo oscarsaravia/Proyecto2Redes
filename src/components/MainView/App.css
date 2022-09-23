@@ -30,6 +30,11 @@ h2{
   font-family: 'Games', sans-serif;
 }
 
+h3{
+  color: white;
+  /* font-family: 'Games', sans-serif; */
+}
+
 .options-checkbox{
   display: flex;
   flex-direction: row;
