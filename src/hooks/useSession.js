@@ -37,6 +37,15 @@ const useSession = () => {
           }
         })
       })
+      socket.on('game_started', (res) => {
+        const { players } = res.body
+        setGame((game) => {
+          return {
+            ...game,
+            players,
+          }
+        })
+      })
     }
   }, [socket, setGame])
 
