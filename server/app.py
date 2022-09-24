@@ -68,22 +68,29 @@ async def join_room(_, username):
 '''
 @sio.on('join_room')
 async def join_room(_, room_id, username):
-
-  rooms[room_id]['players'][username] = {
-    "username": username,
-    "cards": [],
-  }
-
-  print(username, " Joined room: " , room_id)
-  await sio.emit('joined_room', {
-    "response": "joined_room",
-    "code": 200,
-    "body": {
-      "room_id": room_id,
-      "owner": rooms[room_id]['players']['owner']['username'],
-      "players": rooms[room_id]['players'],
+  able_to_join = len(rooms[room_id]['players']) < 4
+  if able_to_join:
+    rooms[room_id]['players'][username] = {
+      "username": username,
+      "cards": [],
     }
-  })
+
+    print(username, " Joined room: " , room_id)
+    await sio.emit('joined_room', {
+      "response": "joined_room",
+      "code": 200,
+      "body": {
+        "room_id": room_id,
+        "owner": rooms[room_id]['players']['owner']['username'],
+        "players": rooms[room_id]['players'],
+      }
+    })
+  else:
+    print("Room is full", username, " Tried to join room: " , room_id)
+    await sio.emit('room_full', {
+      "response": "room_full",
+      "code": 101,
+    })
 
 '''
   @param room_id string
@@ -106,15 +113,15 @@ async def start_game(_, room_id):
     random.shuffle(new_cards)
     players = list(rooms[room_id]['players'].keys())
     random.shuffle(players)
-    
+
     for i in range(len(new_cards)):
         player_pos = i%player_count
         rooms[room_id]['players'][players[player_pos]]['cards'].append(new_cards[i])
-    
+
     for i in range(len(players)):
         rooms[room_id]['players'][players[i]]['position'] = i
 
-  
+
     print("Game started in room: " , room_id, rooms[room_id]['players'])
     await sio.emit('game_started', {
         "response": "game_started",

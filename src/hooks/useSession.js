@@ -14,7 +14,7 @@ const useSession = () => {
     answer: '',
     owner: '',
     game_started: false,
-    code: 101,
+    response: '',
   })
 
   useEffect(() => {
@@ -29,15 +29,28 @@ const useSession = () => {
       })
       socket.on('joined_room', (res) => {
         const { room_id, owner, players } = res.body
+        const { response } = res
         setGame((game) => {
           return {
             ...game,
             owner,
             room_id,
             players,
+            response,
           }
         })
       })
+
+      socket.on('room_full', (res) => {
+        const { response } = res
+        setGame((game) => {
+          return {
+            ...game,
+            response,
+          }
+        })
+      })
+
       socket.on('game_started', (res) => {
         console.log("response",res)
         const { players } = res.body

@@ -1,6 +1,6 @@
 import './joinRoom.css'
 import { useNavigate, useLocation} from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { joinRoom } from '../../websockets/socket';
 import  useSession  from '../../hooks/useSession'
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,10 +11,11 @@ const JoinRoom = () => {
     const [room_id, setRoom_id] = useState('');
     const { username } = useLocation().state;
     const session = useSession();
-    const { code } = session.game;
+    const { response } = session.game;
     const fullRoom = true;
-    const navigateMain = () => {
-        if(code === 101){
+
+    useEffect(() => {
+        if(response === 'room_full'){
             toast.error('Sala esta llena',{
                     position: "top-right",
                     autoClose: 5000,
@@ -24,8 +25,8 @@ const JoinRoom = () => {
                     draggable: true,
                     progress: undefined,
             });
-        }else if(code === 200){
-            joinRoom(username, room_id)
+        }else if(response === 'joined_room'){
+
             navigate('/game', {
                 state: {
                     waiting: true,
@@ -35,6 +36,10 @@ const JoinRoom = () => {
                 }
             });
         }
+    }, [response]);
+
+    const navigateMain = () => {
+        joinRoom(username, room_id)
     }
 
     const onChange = (e) => {
@@ -54,7 +59,6 @@ const JoinRoom = () => {
                 draggable
                 pauseOnHover
                 />
-
             {/* Same as */}
             <ToastContainer />
             <h1>Unirse a sala</h1>
