@@ -1,6 +1,6 @@
 .image_properties {
-  width: 6rem;
-  height: 9rem;
+  width: 5.5rem;
+  height: 8rem;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -11,12 +11,23 @@
   transition: .4s ease-out;
   position: relative;
   left: 2rem;
+
+  &:hover {
+    box-shadow: -1rem 0 1rem #000;
+    transform: translate(0, -4rem) scale(1.1);
+    z-index: 5;
+  }
 }
 
 // BACK CARD //
 .BACK {
   @extend .image_properties;
   background-image: url(../../assets/svg/cards_svg/BACK.svg);
+  &:hover {
+    box-shadow: -1rem 0 1rem #000;
+    transform: translate(0, 0) scale(1);
+    z-index: 0;
+  }
 }
 
 // CLUB CARDS //
