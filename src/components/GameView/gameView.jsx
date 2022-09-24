@@ -10,8 +10,6 @@ const GameView = () => {
     const session = useSession()
     const { players} = session.game
 
-    console.log(players, session,name)
-
     if (waiting) {
         return (
             <div className='waiting'>
@@ -28,24 +26,21 @@ const GameView = () => {
     return (
         <div className="game-view">
             <div className='game-view__players'>
-                {/*
-                    players && players?.map((player, index) => {
-                        if (player.username !== username) {
-                            return <Player key={index} player={player} />
+                {
+                    players && Object.keys(players).map((player, index) => {
+                        if (players[player].username !== username) {
+                            return <Player key={index} player={players[player]} hide />
                         }
                     })
-                */}
+                }
             </div>
             <div className='game-view__board'>
                 <Card type='BACK' />
             </div>
             <div className='game-view__main-player'>
-                {players[name] && <Player player={players[name]} />}
-                {/*
-                    players && players[name]?.cards.map((card, index) => (
-
-                    ))
-                    */}
+                {
+                    players[name] && <Player player={players[name]} />
+                }
             </div>
         </div>
     )
