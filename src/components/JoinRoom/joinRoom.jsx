@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { joinRoom } from '../../websockets/socket';
 import  useSession  from '../../hooks/useSession'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const JoinRoom = () => {
 
     const navigate = useNavigate();
