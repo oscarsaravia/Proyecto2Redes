@@ -19,7 +19,7 @@ async def index(request):
 
 
 
-rooms = []
+rooms = {}
 
 '''
   @param username
@@ -34,18 +34,51 @@ rooms = []
 @sio.on('create_room')
 async def join_room(_, username):
   room_id = str(uuid.uuid1())
-  rooms.append({
-    "room_id": room_id,
-    "player": [{
-      "username": username
-    }]
-  })
+  rooms[room_id] = {
+    "id": room_id,
+    "players": {
+        "owner": {
+            "username": username,
+        }
+    }
+  }
   print("Created room: " , room_id)
   await sio.emit('room_created', {
     "response": "room_created",
     "code": 200,
     "body": {
       "room_id": room_id
+    }
+  })
+
+'''
+  @param room_id string
+  @param username string
+  @return {
+    response,
+    code,
+    body: {
+      owner: string,
+      room_id: string,
+      players: []
+    }
+  }
+'''
+@sio.on('join_room')
+async def join_room(_, room_id, username):
+
+  rooms[room_id]['players'][username] = {
+    "username": username
+  }
+  
+  print(username, " Joined room: " , room_id)
+  await sio.emit('joined_room', {
+    "response": "joined_room",
+    "code": 200,
+    "body": {
+      "room_id": room_id,
+      "owner": rooms[room_id]['players']['owner']['username'],
+      "players": rooms[room_id]['players'],
     }
   })
 

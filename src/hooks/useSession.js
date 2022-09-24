@@ -3,19 +3,45 @@ import { getSocket } from '../websockets/socket'
 
 const useSession = () => {
   const socket = getSocket()
-  const [response, setResponse] = useState()
+  const [game, setGame] = useState({
+    players: [],
+    room_id: '',
+    winner: '',
+    next_player: '',
+    last_player: '',
+    telltale: '',
+    accused: '',
+    answer: '',
+    owner: '',
+  })
 
   useEffect(() => {
     if (socket) {
       socket.on('room_created', (response) => {
         // console.log(response)
-        setResponse(response)
+        setGame((game) => {
+          return {
+            ...game,
+            room_id: response.body.room_id,
+          }
+        })
+      })
+      socket.on('joined_room', (res) => {
+        const { room_id, owner, players } = res.body
+        setGame((game) => {
+          return {
+            ...game,
+            owner,
+            room_id,
+            players,
+          }
+        })
       })
     }
-  }, [socket])
+  }, [socket, setGame])
 
   return {
-    response,
+    game,
   }
 }
 
