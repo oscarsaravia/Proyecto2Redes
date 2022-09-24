@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './createRoom.scss'
 import useSession from '../../hooks/useSession'
-import { createRoom } from '../../websockets/socket'
+import { createRoom, startGame } from '../../websockets/socket'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const CreateRoom = () => {
@@ -14,11 +14,13 @@ const CreateRoom = () => {
         createRoom(username)
     }
     const navigateMain = () => {
+        startGame(session.game.room_id)
         navigate('/game', {
             state: {
               username: username,
               room_id: session.game.room_id,
               waiting: false,
+              isOwner: true,
             }
           });
     }

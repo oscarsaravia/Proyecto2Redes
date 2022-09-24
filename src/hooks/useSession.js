@@ -4,7 +4,7 @@ import { getSocket } from '../websockets/socket'
 const useSession = () => {
   const socket = getSocket()
   const [game, setGame] = useState({
-    players: [],
+    players: {},
     room_id: '',
     winner: '',
     next_player: '',
@@ -38,6 +38,7 @@ const useSession = () => {
         })
       })
       socket.on('game_started', (res) => {
+        console.log("response",res)
         const { players } = res.body
         setGame((game) => {
           return {

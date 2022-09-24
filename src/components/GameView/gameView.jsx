@@ -1,30 +1,16 @@
 import { useLocation } from 'react-router-dom'
 import { Card } from '../Card'
 import { Player } from '../Player'
+import  useSession  from '../../hooks/useSession'
 import './gameView.scss'
 
 const GameView = () => {
-    const { waiting, username, room_id } = useLocation().state
-    const player = {
-        username: username,
-        room_id: room_id,
-        cards: ['CLUB_2', 'CLUB_Q', 'DIAMOND_2', 'DIAMOND_K']
-    }
-    const player2 = {
-        username: 'bryann',
-        room_id: room_id,
-        cards: ['BACK', 'BACK', 'BACK', 'BACK']
-    }
-    const player3 = {
-        username: 'Donaldo',
-        room_id: room_id,
-        cards: ['BACK', 'BACK', 'BACK', 'BACK']
-    }
-    const player4 = {
-        username: 'saravia',
-        room_id: room_id,
-        cards: ['BACK', 'BACK', 'BACK', 'BACK']
-    }
+    const { waiting, username, room_id, isOwner } = useLocation().state
+    const name = isOwner ? 'owner' : username
+    const session = useSession()
+    const { players} = session.game
+
+    console.log(players, session,name)
 
     if (waiting) {
         return (
@@ -42,15 +28,24 @@ const GameView = () => {
     return (
         <div className="game-view">
             <div className='game-view__players'>
-                <Player player={player2} />
-                <Player player={player3} />
-                <Player player={player4} />
+                {/*
+                    players && players?.map((player, index) => {
+                        if (player.username !== username) {
+                            return <Player key={index} player={player} />
+                        }
+                    })
+                */}
             </div>
             <div className='game-view__board'>
                 <Card type='BACK' />
             </div>
             <div className='game-view__main-player'>
-                <Player player={player} />
+                {players[name] && <Player player={players[name]} />}
+                {/*
+                    players && players[name]?.cards.map((card, index) => (
+
+                    ))
+                    */}
             </div>
         </div>
     )

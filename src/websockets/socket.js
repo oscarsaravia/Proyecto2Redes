@@ -18,10 +18,15 @@ const disconnectSocket = () => {
   if (socket) socket.disconnect()
 }
 
+const startGame = (room_id) => {
+  if (socket) socket.emit('start_game', room_id)
+}
+
 export {
   initiateSocket,
   getSocket,
   disconnectSocket,
   createRoom,
   joinRoom,
+  startGame,
 }
