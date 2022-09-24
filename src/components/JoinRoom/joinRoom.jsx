@@ -12,6 +12,9 @@ const JoinRoom = () => {
         navigate('/game', {
             state: {
                 waiting: true,
+                owner: false,
+                username,
+                room_id
             }
         });
     }

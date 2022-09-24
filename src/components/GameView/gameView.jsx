@@ -8,9 +8,9 @@ const GameView = () => {
     const { waiting, username, room_id, isOwner } = useLocation().state
     const name = isOwner ? 'owner' : username
     const session = useSession()
-    const { players} = session.game
+    const { players, game_started} = session.game
 
-    if (waiting) {
+    if (waiting && !game_started) {
         return (
             <div className='waiting'>
                 <h2>Waiting host to start Game</h2>

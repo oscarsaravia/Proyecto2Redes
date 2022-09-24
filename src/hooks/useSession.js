@@ -13,6 +13,7 @@ const useSession = () => {
     accused: '',
     answer: '',
     owner: '',
+    game_started: false,
   })
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const useSession = () => {
           return {
             ...game,
             players,
+            game_started: true,
           }
         })
       })
