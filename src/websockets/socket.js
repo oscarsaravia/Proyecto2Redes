@@ -7,7 +7,7 @@ const initiateSocket = () => {
 const getSocket = () => socket
 
 const createRoom = (username) => {
-  if (socket) socket.emit('create_room', { username })
+  if (socket) socket.emit('create_room', username )
 }
 
 const joinRoom = (username, room) => {
