@@ -3,6 +3,8 @@ import { Card } from '../Card'
 import { Player } from '../Player'
 import  useSession  from '../../hooks/useSession'
 import './gameView.scss'
+import { Message } from '../Message'
+import { Bluff } from '../Bluff'
 
 const GameView = () => {
     const { waiting, username, room_id, isOwner } = useLocation().state
@@ -38,9 +40,11 @@ const GameView = () => {
                 <Card type='BACK' />
             </div>
             <div className='game-view__main-player'>
+                <Bluff />
                 {
                     players[name] && <Player player={players[name]} />
                 }
+                <Message />
             </div>
         </div>
     )
