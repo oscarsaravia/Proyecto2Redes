@@ -70,7 +70,7 @@ async def join_room(_, room_id, username):
   rooms[room_id]['players'][username] = {
     "username": username
   }
-  
+
   print(username, " Joined room: " , room_id)
   await sio.emit('joined_room', {
     "response": "joined_room",

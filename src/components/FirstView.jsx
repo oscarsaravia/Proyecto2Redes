@@ -12,12 +12,16 @@ const FirstView = () => {
       if (valueRoom) {
         navigate('/create', {
           state: {
-            username: username,
+            username,
           }
         });
       }
       if (valueJoin) {
-        navigate('/join');
+        navigate('/join',{
+          state: {
+            username,
+          }
+        });
       }
     }
 
