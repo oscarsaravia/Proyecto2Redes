@@ -14,7 +14,7 @@ const GameView = () => {
         return (
             <div className='waiting'>
                 <h2>Waiting host to start Game</h2>
-                <div class="lds-ellipsis">
+                <div className="lds-ellipsis">
                     <div />
                     <div />
                     <div />
