@@ -14,6 +14,7 @@ const useSession = () => {
     answer: '',
     owner: '',
     game_started: false,
+    code: 101,
   })
 
   useEffect(() => {
