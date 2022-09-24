@@ -18,7 +18,6 @@ const useSession = () => {
   useEffect(() => {
     if (socket) {
       socket.on('room_created', (response) => {
-        // console.log(response)
         setGame((game) => {
           return {
             ...game,
