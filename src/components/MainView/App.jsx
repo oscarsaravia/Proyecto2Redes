@@ -7,23 +7,23 @@ import { initiateSocket } from '../../websockets/socket'
 import GameView from '../GameView/gameView.jsx';
 
 import './App.css'
+import { PlayerProvider } from '../../Context/PlayerContext/PlayerProvider.jsx';
 
 function App() {
   initiateSocket()
   return (
     <>
-
-      <Router>
-        <Routes>
-          <Route index element={<FirstView />} />
-          <Route path="/" element={<FirstView/>}></Route>
-          <Route path='/create' element={<CreateRoom />}/>
-          <Route path='/join' element={<JoinRoom />}/>
-          <Route path='/game' element={<GameView />}/>
-        </Routes>
-      </Router>
-
-
+      <PlayerProvider>
+        <Router>
+          <Routes>
+            <Route index element={<FirstView />} />
+            <Route path="/" element={<FirstView/>}></Route>
+            <Route path='/create' element={<CreateRoom />}/>
+            <Route path='/join' element={<JoinRoom />}/>
+            <Route path='/game' element={<GameView />}/>
+          </Routes>
+        </Router>
+      </PlayerProvider>
     </>
 
   )

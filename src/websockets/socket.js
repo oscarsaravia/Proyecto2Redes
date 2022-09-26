@@ -22,6 +22,12 @@ const startGame = (room_id) => {
   if (socket) socket.emit('start_game', room_id)
 }
 
+const nextPlayer = (card, room_id, username) => {
+  if (socket) {
+    console.log('next player called')
+    socket.emit('next_turn', card, room_id, username)}
+}
+
 export {
   initiateSocket,
   getSocket,
@@ -29,4 +35,5 @@ export {
   createRoom,
   joinRoom,
   startGame,
+  nextPlayer,
 }

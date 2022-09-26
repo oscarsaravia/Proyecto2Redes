@@ -1,25 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { PlayerContext } from '../Context/PlayerContext/PlayerContext'
 import { getSocket } from '../websockets/socket'
 
 const useSession = () => {
+  const { game, setGame } = useContext(PlayerContext)
   const socket = getSocket()
-  const [game, setGame] = useState({
-    players: {},
-    room_id: '',
-    winner: '',
-    next_player: '',
-    last_player: '',
-    telltale: '',
-    accused: '',
-    answer: '',
-    owner: '',
-    game_started: false,
-    response: '',
-  })
 
   useEffect(() => {
     if (socket) {
       socket.on('room_created', (response) => {
+        console.log('room_created', response, game)
         setGame((game) => {
           return {
             ...game,
@@ -28,6 +18,7 @@ const useSession = () => {
         })
       })
       socket.on('joined_room', (res) => {
+        console.log('joined room', res)
         const { room_id, owner, players } = res.body
         const { response } = res
         setGame((game) => {
@@ -42,6 +33,7 @@ const useSession = () => {
       })
 
       socket.on('room_full', (res) => {
+        console.log('room full', res)
         const { response } = res
         setGame((game) => {
           return {
@@ -52,13 +44,26 @@ const useSession = () => {
       })
 
       socket.on('game_started', (res) => {
-        console.log("response",res)
+        console.log("response",res, game)
         const { players } = res.body
         setGame((game) => {
           return {
             ...game,
             players,
             game_started: true,
+          }
+        })
+      })
+
+      socket.on('next_turn', (res) => {
+        console.log("next_turn",res)
+        const { next_player, last_player, players } = res.body
+        setGame((game) => {
+          return {
+            ...game,
+            next_player,
+            last_player,
+            players
           }
         })
       })
