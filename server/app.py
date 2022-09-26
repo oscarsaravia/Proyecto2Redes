@@ -37,6 +37,7 @@ async def join_room(_, username):
   room_id = str(uuid.uuid1())
   rooms[room_id] = {
     "id": room_id,
+    "stack": [],
     "players": {
         "owner": {
             "username": username,
@@ -127,6 +128,46 @@ async def start_game(_, room_id):
         "response": "game_started",
         "code": 200,
         "body": {
+            "players": rooms[room_id]['players'],
+        }
+    })
+
+'''
+  @param card string
+  @param room_id string
+  @param username string
+  @return {
+    response,
+    code,
+    body: {
+      next_player: string,
+      last_player: string,
+    }
+  }
+'''
+@sio.on('next_turn')
+async def next_turn(_, card, room_id, username):
+    print('desde server', card, room_id, username)
+    # add the card to the stack 
+    rooms[room_id]['stack'].append(card)
+
+    actual_player = rooms[room_id]['players'][username]['position']
+    next_player = (actual_player + 1) % len(rooms[room_id]['players'])
+    next_player_username = ''
+    # remove the card from the player
+    rooms[room_id]['players'][username]['cards'].remove(card)
+    # find the next player
+    for player in rooms[room_id]['players']:
+        if rooms[room_id]['players'][player]['position'] == next_player:
+            next_player_username = player
+
+    print("Next turn is for: ", next_player_username, " in room: " , room_id, 'current stack: ', rooms[room_id]['stack'])
+    await sio.emit('next_turn', {
+        "response": "next_turn",
+        "code": 200,
+        "body": {
+            "next_player": next_player_username,
+			      "last_player": username,
             "players": rooms[room_id]['players'],
         }
     })
