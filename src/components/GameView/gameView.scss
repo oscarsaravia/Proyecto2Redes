@@ -30,6 +30,14 @@ html,body{
       padding: 1rem;
     }
 
+    &__board {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
+      align-items: center;
+    }
+
     &__main-player {
       display: flex;
       flex-direction: row;

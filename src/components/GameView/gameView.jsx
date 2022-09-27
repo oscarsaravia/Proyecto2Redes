@@ -5,12 +5,13 @@ import  useSession  from '../../hooks/useSession'
 import './gameView.scss'
 import { Message } from '../Message'
 import { Bluff } from '../Bluff'
+import { Turn } from '../Turn'
 
 const GameView = () => {
     const { waiting, username, room_id, isOwner } = useLocation().state
     const name = isOwner ? 'owner' : username
     const session = useSession()
-    const { players, game_started} = session.game
+    const { players, game_started, next_player } = session.game
 
     if (waiting && !game_started) {
         return (
@@ -37,6 +38,7 @@ const GameView = () => {
                 }
             </div>
             <div className='game-view__board'>
+                <Turn next_player={next_player} players={players} />
                 <Card type='BACK' />
             </div>
             <div className='game-view__main-player'>
