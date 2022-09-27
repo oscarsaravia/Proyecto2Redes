@@ -14,6 +14,7 @@ const useSession = () => {
           return {
             ...game,
             room_id: response.body.room_id,
+            owner: response.body.owner,
           }
         })
       })
@@ -45,12 +46,13 @@ const useSession = () => {
 
       socket.on('game_started', (res) => {
         console.log("response",res, game)
-        const { players } = res.body
+        const { players, next_player } = res.body
         setGame((game) => {
           return {
             ...game,
             players,
             game_started: true,
+            next_player,
           }
         })
       })

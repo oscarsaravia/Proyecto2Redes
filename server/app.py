@@ -50,7 +50,8 @@ async def join_room(_, username):
     "response": "room_created",
     "code": 200,
     "body": {
-      "room_id": room_id
+      "room_id": room_id,
+      "owner": username,
     }
   })
 
@@ -129,6 +130,7 @@ async def start_game(_, room_id):
         "code": 200,
         "body": {
             "players": rooms[room_id]['players'],
+            "next_player": players[0],
         }
     })
 
@@ -148,7 +150,7 @@ async def start_game(_, room_id):
 @sio.on('next_turn')
 async def next_turn(_, card, room_id, username):
     print('desde server', card, room_id, username)
-    # add the card to the stack 
+    # add the card to the stack
     rooms[room_id]['stack'].append(card)
 
     actual_player = rooms[room_id]['players'][username]['position']
