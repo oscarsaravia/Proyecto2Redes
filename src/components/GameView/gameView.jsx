@@ -6,12 +6,13 @@ import './gameView.scss'
 import { Message } from '../Message'
 import { Bluff } from '../Bluff'
 import { Turn } from '../Turn'
+import { ActualCard } from '../ActualCard'
 
 const GameView = () => {
     const { waiting, username, room_id, isOwner } = useLocation().state
     const name = isOwner ? 'owner' : username
     const session = useSession()
-    const { players, game_started, next_player } = session.game
+    const { players, game_started, next_player, next_card } = session.game
 
     if (waiting && !game_started) {
         return (
@@ -40,6 +41,7 @@ const GameView = () => {
             <div className='game-view__board'>
                 <Turn next_player={next_player} players={players} />
                 <Card type='BACK' />
+                <ActualCard next_card={next_card} />
             </div>
             <div className='game-view__main-player'>
                 <Bluff />

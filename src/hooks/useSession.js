@@ -46,26 +46,28 @@ const useSession = () => {
 
       socket.on('game_started', (res) => {
         console.log("response",res, game)
-        const { players, next_player } = res.body
+        const { players, next_player, next_card } = res.body
         setGame((game) => {
           return {
             ...game,
             players,
             game_started: true,
             next_player,
+            next_card,
           }
         })
       })
 
       socket.on('next_turn', (res) => {
         console.log("next_turn",res)
-        const { next_player, last_player, players } = res.body
+        const { next_player, last_player, players, next_card } = res.body
         setGame((game) => {
           return {
             ...game,
             next_player,
             last_player,
-            players
+            players,
+            next_card,
           }
         })
       })

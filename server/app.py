@@ -21,6 +21,7 @@ async def index(request):
 
 cards = ['CLUB_A', 'CLUB_2', 'CLUB_3', 'CLUB_4', 'CLUB_5', 'CLUB_6', 'CLUB_7', 'CLUB_8', 'CLUB_9', 'CLUB_10', 'CLUB_J', 'CLUB_Q', 'CLUB_K', 'DIAMOND_A', 'DIAMOND_2', 'DIAMOND_3', 'DIAMOND_4', 'DIAMOND_5', 'DIAMOND_6', 'DIAMOND_7', 'DIAMOND_8', 'DIAMOND_9', 'DIAMOND_10', 'DIAMOND_J', 'DIAMOND_Q', 'DIAMOND_K', 'HEART_A', 'HEART_2', 'HEART_3', 'HEART_4', 'HEART_5', 'HEART_6', 'HEART_7', 'HEART_8', 'HEART_9', 'HEART_10', 'HEART_J', 'HEART_Q', 'HEART_K', 'SPADE_A', 'SPADE_2', 'SPADE_3', 'SPADE_4', 'SPADE_5', 'SPADE_6', 'SPADE_7', 'SPADE_8', 'SPADE_9', 'SPADE_10', 'SPADE_J', 'SPADE_Q', 'SPADE_K', 'JOKER_1', 'JOKER_2', 'JOKER_3']
 rooms = {}
+play_cards = ['_A', '_2', '_3', '_4', '_5', '_6', '_7', '_8', '_9', '_10', '_J', '_Q', '_K']
 
 '''
   @param username
@@ -123,6 +124,9 @@ async def start_game(_, room_id):
     for i in range(len(players)):
         rooms[room_id]['players'][players[i]]['position'] = i
 
+    # add the card to the actual_card
+    rooms[room_id]['actual_card'] = '_A'
+
 
     print("Game started in room: " , room_id, rooms[room_id]['players'])
     await sio.emit('game_started', {
@@ -131,6 +135,7 @@ async def start_game(_, room_id):
         "body": {
             "players": rooms[room_id]['players'],
             "next_player": players[0],
+            "next_card": rooms[room_id]['actual_card'],
         }
     })
 
@@ -162,6 +167,15 @@ async def next_turn(_, card, room_id, username):
     for player in rooms[room_id]['players']:
         if rooms[room_id]['players'][player]['position'] == next_player:
             next_player_username = player
+    
+    # find the next card to play
+    next_card = ''
+    for card in play_cards:
+        if card == rooms[room_id]['actual_card']:
+            next_card = play_cards[(play_cards.index(card) + 1) % len(play_cards)]
+            rooms[room_id]['actual_card'] = next_card
+            break
+            
 
     print("Next turn is for: ", next_player_username, " in room: " , room_id, 'current stack: ', rooms[room_id]['stack'])
     await sio.emit('next_turn', {
@@ -171,6 +185,7 @@ async def next_turn(_, card, room_id, username):
             "next_player": next_player_username,
 			      "last_player": username,
             "players": rooms[room_id]['players'],
+            "next_card": next_card,
         }
     })
 

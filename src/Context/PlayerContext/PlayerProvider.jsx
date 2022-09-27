@@ -6,6 +6,7 @@ export const PlayerProvider = ({ children }) => {
     players: {},
     room_id: '',
     winner: '',
+    next_card: '',
     next_player: '',
     last_player: '',
     telltale: '',
