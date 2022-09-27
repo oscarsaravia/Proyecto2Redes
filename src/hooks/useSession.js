@@ -71,6 +71,20 @@ const useSession = () => {
           }
         })
       })
+
+      socket.on('farol', (res) => {
+        console.log("farol",res)
+        const { answer, telltale, accused, players, room_id } = res.body
+        setGame((game) => {
+          return {
+            ...game,
+            answer,
+            telltale,
+            accused,
+            players,            
+          }
+        })
+      })
     }
   }, [socket, setGame])
 

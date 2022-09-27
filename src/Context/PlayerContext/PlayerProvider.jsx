@@ -15,6 +15,7 @@ export const PlayerProvider = ({ children }) => {
     owner: '',
     game_started: false,
     response: '',
+    cards: [],
   })
 
   return (

@@ -154,7 +154,6 @@ async def start_game(_, room_id):
 '''
 @sio.on('next_turn')
 async def next_turn(_, card, room_id, username):
-    print('desde server', card, room_id, username)
     # add the card to the stack
     rooms[room_id]['stack'].append(card)
 
@@ -186,6 +185,54 @@ async def next_turn(_, card, room_id, username):
 			      "last_player": username,
             "players": rooms[room_id]['players'],
             "next_card": next_card,
+        }
+    })
+
+'''
+  @param telltale string
+  @param accused string
+  @param room_id string
+  @return {
+    response,
+    code,
+    body: {
+      answer: string,
+      telltale: string,
+      accused: string,
+      cards: string[],
+      room_id: string,
+    }
+  }
+'''
+@sio.on('farol')
+async def farol(_, telltale, accused, room_id):
+    print('farol', rooms[room_id]['stack'][-1], rooms[room_id]['actual_card'])
+    last_card_in_stack = rooms[room_id]['stack'][-1]
+    index_last_card = (play_cards.index(rooms[room_id]['actual_card']) - 1) % len(play_cards) 
+    last_card = play_cards[index_last_card]
+    answer = last_card not in last_card_in_stack and 'JOKER' not in last_card_in_stack
+
+    cards = rooms[room_id]['stack'].copy()
+    rooms[room_id]['stack'] = []
+
+    # if answer is true, the accused player loses
+    if answer:
+        for card in cards:
+            rooms[room_id]['players'][accused]['cards'].append(card)
+    else:
+        for card in cards:
+            rooms[room_id]['players'][telltale]['cards'].append(card)
+
+    print("Telltale: ", telltale, " was " , answer, 'to accused', accused, cards)
+    await sio.emit('farol', {
+        "response": "farol",
+        "code": 200,
+        "body": {
+            "answer": answer,
+            "telltale": telltale,
+            "accused": accused,
+            "players": rooms[room_id]['players'],
+            "room_id": room_id,
         }
     })
 

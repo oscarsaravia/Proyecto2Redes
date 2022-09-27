@@ -12,7 +12,7 @@ const GameView = () => {
     const { waiting, username, room_id, isOwner } = useLocation().state
     const name = isOwner ? 'owner' : username
     const session = useSession()
-    const { players, game_started, next_player, next_card } = session.game
+    const { players, game_started, next_player, next_card, last_player } = session.game
 
     if (waiting && !game_started) {
         return (
@@ -44,7 +44,7 @@ const GameView = () => {
                 <ActualCard next_card={next_card} />
             </div>
             <div className='game-view__main-player'>
-                <Bluff />
+                <Bluff player={players[name]} accused={last_player} roomId={room_id} players={players} />
                 {
                     players[name] && <Player player={players[name]} />
                 }

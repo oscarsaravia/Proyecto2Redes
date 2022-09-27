@@ -23,9 +23,11 @@ const startGame = (room_id) => {
 }
 
 const nextPlayer = (card, room_id, username) => {
-  if (socket) {
-    console.log('next player called')
-    socket.emit('next_turn', card, room_id, username)}
+  if (socket) socket.emit('next_turn', card, room_id, username)
+}
+
+const farol = (telltale, accused, room_id) => {
+  if (socket) socket.emit('farol', telltale, accused, room_id)
 }
 
 export {
@@ -36,4 +38,5 @@ export {
   joinRoom,
   startGame,
   nextPlayer,
+  farol,
 }
