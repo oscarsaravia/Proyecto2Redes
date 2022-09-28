@@ -88,17 +88,6 @@ export const Bluff = ({ player, accused, roomId, players }) => {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        />
     {/* Same as */}
     <ToastContainer />
       <Fab onClick={bluff} variant="extended" size="medium" color="primary" aria-label="add">
