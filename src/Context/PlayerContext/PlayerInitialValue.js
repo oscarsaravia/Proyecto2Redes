@@ -1,0 +1,15 @@
+export const PlayerInitialValue = {
+  players: {},
+  room_id: '',
+  winner: '',
+  next_card: '',
+  next_player: '',
+  last_player: '',
+  telltale: '',
+  accused: '',
+  answer: '',
+  owner: '',
+  game_started: false,
+  response: '',
+  cards: [],
+}

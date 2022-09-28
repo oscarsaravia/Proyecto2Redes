@@ -85,6 +85,18 @@ const useSession = () => {
           }
         })
       })
+
+      socket.on('game_finished', (res) => {
+        console.log("game_finished",res)
+        const { winner, room_id } = res.body
+        setGame((game) => {
+          return {
+            ...game,
+            winner,
+          }
+        })
+      })
+      
     }
   }, [socket, setGame])
 

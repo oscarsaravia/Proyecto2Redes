@@ -1,22 +1,9 @@
 import { useState } from "react"
 import { PlayerContext } from "./PlayerContext"
+import { PlayerInitialValue } from "./PlayerInitialValue"
 
 export const PlayerProvider = ({ children }) => {
-  const [game, setGame] = useState({
-    players: {},
-    room_id: '',
-    winner: '',
-    next_card: '',
-    next_player: '',
-    last_player: '',
-    telltale: '',
-    accused: '',
-    answer: '',
-    owner: '',
-    game_started: false,
-    response: '',
-    cards: [],
-  })
+  const [game, setGame] = useState(PlayerInitialValue)
 
   return (
     <PlayerContext.Provider value={{

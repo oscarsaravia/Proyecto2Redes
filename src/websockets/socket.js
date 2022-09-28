@@ -2,7 +2,8 @@ import io from 'socket.io-client'
 
 let socket
 const initiateSocket = () => {
-  socket = io('http://localhost:8080')
+  // socket = io('http://localhost:8080')
+  socket = io('https://guarded-harbor-53293.herokuapp.com/')
 }
 const getSocket = () => socket
 
@@ -30,6 +31,10 @@ const farol = (telltale, accused, room_id) => {
   if (socket) socket.emit('farol', telltale, accused, room_id)
 }
 
+const gameFinished = (winner, room_id) => {
+  if (socket) socket.emit('finish_game', winner, room_id)
+}
+
 export {
   initiateSocket,
   getSocket,
@@ -39,4 +44,5 @@ export {
   startGame,
   nextPlayer,
   farol,
+  gameFinished,
 }

@@ -5,9 +5,9 @@ import JoinRoom from '../JoinRoom/joinRoom.jsx';
 import FirstView from '../FirstView.jsx';
 import { initiateSocket } from '../../websockets/socket'
 import GameView from '../GameView/gameView.jsx';
-
 import './App.css'
 import { PlayerProvider } from '../../Context/PlayerContext/PlayerProvider.jsx';
+import { Finish } from '../Finish';
 
 function App() {
   initiateSocket()
@@ -21,6 +21,7 @@ function App() {
             <Route path='/create' element={<CreateRoom />}/>
             <Route path='/join' element={<JoinRoom />}/>
             <Route path='/game' element={<GameView />}/>
+            <Route path='/finish' element={<Finish />}/>
           </Routes>
         </Router>
       </PlayerProvider>
