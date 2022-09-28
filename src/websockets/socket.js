@@ -2,7 +2,7 @@ import io from 'socket.io-client'
 
 let socket
 const initiateSocket = () => {
-  socket = io('http://localhost:8080')
+  socket = io('http://localhost:5000')
   // socket = io('https://guarded-harbor-53293.herokuapp.com/')
 }
 const getSocket = () => socket
