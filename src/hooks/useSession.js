@@ -97,6 +97,17 @@ const useSession = () => {
         })
       })
       
+      socket.on('message_recieved', (res) => {
+        console.log("message_recieved",res)
+        const { chat, room_id } = res.body
+
+        setGame((game) => {
+          return {
+            ...game,
+            chat, 
+          }
+        })
+      })
     }
   }, [socket, setGame])
 

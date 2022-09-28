@@ -35,6 +35,10 @@ const gameFinished = (winner, room_id) => {
   if (socket) socket.emit('finish_game', winner, room_id)
 }
 
+const sendChatMessage = (username, room_id, message) => {
+  if (socket) socket.emit('send_message', username, room_id, message)
+}
+
 export {
   initiateSocket,
   getSocket,
@@ -45,4 +49,5 @@ export {
   nextPlayer,
   farol,
   gameFinished,
+  sendChatMessage,
 }

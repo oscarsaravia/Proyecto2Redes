@@ -11,5 +11,6 @@ export const PlayerInitialValue = {
   owner: '',
   game_started: false,
   response: '',
+  chat: [],
   cards: [],
 }

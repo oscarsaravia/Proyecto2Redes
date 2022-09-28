@@ -1,0 +1,81 @@
+.message__container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 35rem;
+  background-color: #82bed9;
+  overflow-y: auto;
+  
+  .message__container__close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+  }
+
+  &__message {
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 5rem;
+    width: 15rem;
+    background-color: #82bed9;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    justify-content: flex-end;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .message_container__input {
+      width: inherit;
+      margin-left: 0.5rem;
+    }
+
+    .send_icon {
+      margin: 1rem;
+    }
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .message_icon {
+      font-size: 50px;
+      color: #ccc;
+    }
+    .message_text {
+      font-size: 14px;
+      color: #ccc;
+    }
+  }
+}
+
+.my-message {
+  align-self: flex-end;
+  background-color: #fff;
+  color: #000;
+}

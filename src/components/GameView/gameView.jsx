@@ -48,7 +48,7 @@ const GameView = () => {
                 {
                     players[name] && <Player player={players[name]} />
                 }
-                <Message />
+                <Message player={players[name]} />
             </div>
         </div>
     )
