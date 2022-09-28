@@ -32,15 +32,17 @@ export const Bluff = ({ player, accused, roomId, players }) => {
 
   useEffect(() => {
     if (answer) {
-      toast.success(`${telltale} ha pillado a ${accused}! ${accused} se lleva todas las cartas`, {
+      toast.success(`${telltale==="owner"? players["owner"].username:telltale} ha pillado a ${accused==="owner"?
+      players["owner"].username:accused}! ${accused==="owner"? players["owner"].username:accused} se lleva todas las cartas`, {
         position: 'top-right',
         autoClose: 5000,
         closeOnClick: true,
         draggable: true,
         progress: 5000,
-      }) 
-    } else {
-      toast.error(`${telltale} fallo en acusar a ${accused}! ${telltale} se lleva todas las cartas`, {
+      })
+    } else if (answer === false) {
+      toast.error(`${telltale==="owner"? players["owner"].username:telltale} fallo en acusar a ${accused==="owner"?
+      players["owner"].username:accused}! ${telltale==="owner"? players["owner"].username:telltale} se lleva todas las cartas`, {
         position: 'top-right',
         autoClose: 5000,
         closeOnClick: true,
@@ -48,6 +50,7 @@ export const Bluff = ({ player, accused, roomId, players }) => {
         progress: 5000,
       })
     }
+
     // if (telltale === player.username && answer) {
     //   toast.success(`Acertaste! ${accused} se lleva todas las cartas`, {
     //     position: "top-right",
