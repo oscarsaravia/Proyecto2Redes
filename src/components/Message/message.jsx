@@ -12,7 +12,7 @@ export const Message = ({ player }) => {
   const [showMessages, setShowMessages] = React.useState(false);
   const [message, setMessage] = React.useState('');
   const { chat, room_id } = useSession().game
-  
+
   const handleShowMessages = () => {
     console.log('show messages');
     setShowMessages(!showMessages);
@@ -39,7 +39,7 @@ export const Message = ({ player }) => {
               <SendIcon />
             </Fab>
           </div>
-        )        
+        )
       }
       {
         showMessages && (
@@ -47,6 +47,7 @@ export const Message = ({ player }) => {
             <Fab color="primary" aria-label="add" className='message__container__close-icon' onClick={handleShowMessages}>
               <CloseIcon />
             </Fab>
+            <div className='messages_users'>
             {
               chat && chat.map((message, index) => {
                 return (
@@ -57,6 +58,8 @@ export const Message = ({ player }) => {
                 )
               })
             }
+            </div>
+
             <div className="message__container__input">
               <TextField id="outlined-basic" className='message_container__input' value={message} onChange={onChange} label="Mensaje" variant="outlined" />
               <Fab color="primary" aria-label="add" className='send_icon' onClick={sendMessage}>
