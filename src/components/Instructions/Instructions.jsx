@@ -46,7 +46,7 @@ export const Instructions = () => {
           <li>Para utilizar el chat, pulse el boton situado en la parte inferior derecha</li>
         </ol>
         <div className="buttons">
-        <button className='back-btn' onClick={ changeFlag }>COMO UTILIZAR EL CLIENTE?</button>
+        <button className='back-btn' onClick={ changeFlag }>COMO JUGAR?</button>
         <button className='back-btn' onClick={ handleBack }>ENTENDIDO</button>
         </div>
       </div>
