@@ -109,7 +109,8 @@ async def join_room(_, room_id, username):
         cards: strings[]
       }],
       next_player: string,
-      next_card string
+      next_card string,
+      room_id: string
     }
   }
 '''
@@ -160,7 +161,8 @@ async def start_game(_, room_id):
       players: [{
         username: string,
         position: number,
-        cards: strings[]
+        cards: strings[] }],
+      room_id: string
     }
   }
 '''
