@@ -20,7 +20,7 @@ export const Bluff = ({ player, accused, roomId, players }) => {
 
       farol(player.username, 'owner', roomId)
     } else {
-      toast.error('No se puede bluffear', {
+      toast.error('No se puede acusar', {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
