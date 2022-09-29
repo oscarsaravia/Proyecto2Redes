@@ -9,7 +9,6 @@ const useSession = () => {
   useEffect(() => {
     if (socket) {
       socket.on('room_created', (response) => {
-        console.log('room_created', response, game)
         setGame((game) => {
           if (game.room_id.length === 0) {
             return {
@@ -21,7 +20,6 @@ const useSession = () => {
         })
       })
       socket.on('joined_room', (res) => {
-        console.log('joined room', res)
         const { room_id, owner, players } = res.body
         const { response } = res
         setGame((game) => {
@@ -38,7 +36,6 @@ const useSession = () => {
       })
 
       socket.on('room_full', (res) => {
-        console.log('room full', res)
         const { response } = res
         setGame((game) => {
           return {
@@ -49,7 +46,6 @@ const useSession = () => {
       })
 
       socket.on('game_started', (res) => {
-        console.log("response",res, game)
         const { players, next_player, next_card, room_id } = res.body
           setGame((game) => {
             if (room_id === game.room_id) {
@@ -65,7 +61,6 @@ const useSession = () => {
       })
 
       socket.on('next_turn', (res) => {
-        console.log("next_turn",res)
         const { next_player, last_player, players, next_card, room_id } = res.body
           setGame((game) => {
             if (room_id === game.room_id) {
@@ -81,7 +76,6 @@ const useSession = () => {
       })
 
       socket.on('farol', (res) => {
-        console.log("farol",res)
         const { answer, telltale, accused, players, room_id } = res.body
         setGame((game) => {
           if (room_id === game.room_id) {
@@ -90,14 +84,13 @@ const useSession = () => {
               answer,
               telltale,
               accused,
-              players,            
+              players,
             }
           } else return game
           })
       })
 
       socket.on('game_finished', (res) => {
-        console.log("game_finished",res)
         const { winner, room_id } = res.body
           setGame((game) => {
             if (room_id === game.room_id) {
@@ -108,15 +101,14 @@ const useSession = () => {
             } else return game
           })
       })
-      
+
       socket.on('message_recieved', (res) => {
-        console.log("message_recieved",res)
         const { chat, room_id } = res.body
           setGame((game) => {
             if (room_id === game.room_id) {
               return {
                 ...game,
-                chat, 
+                chat,
               }
             } else return game
           })

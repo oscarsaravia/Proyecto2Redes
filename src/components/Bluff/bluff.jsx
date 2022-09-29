@@ -10,19 +10,25 @@ export const Bluff = ({ player, accused, roomId, players }) => {
   const { answer, telltale, owner } = useSession().game
 
   const bluff = () => {
-    console.log('bluff', player.username, accused, roomId, owner)
     if (accused &&  Object.keys(players).includes(player.username) && Object.keys(players).includes(accused)) {
-      console.log('1')
+
       farol(player.username, accused, roomId)
     } else if (accused && !Object.keys(players).includes(player.username)) {
-      console.log('2 owner es telltale')
+
       farol('owner', accused, roomId)
     } else if (accused && !Object.keys(players).includes(accused)) {
-      console.log('3')
+
       farol(player.username, 'owner', roomId)
     } else {
-      console.log('4')
-      console.log('no se puede bluffear')
+      toast.error('No se puede bluffear', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }
     // if (accused &&  Object.keys(players).includes(telltale) && Object.keys(players).includes(accused)) farol(player.username, accused, roomId)
     // else if (accused && telltale === owner ) farol('owner', accused, roomId)

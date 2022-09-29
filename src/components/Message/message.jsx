@@ -14,12 +14,10 @@ export const Message = ({ player }) => {
   const { chat, room_id } = useSession().game
 
   const handleShowMessages = () => {
-    console.log('show messages');
     setShowMessages(!showMessages);
   };
 
   const sendMessage = () => {
-    console.log('send message', message);
     if (message && player?.username){
       sendChatMessage(player.username, room_id, message)
       setMessage('')
