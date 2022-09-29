@@ -39,7 +39,7 @@ const JoinRoom = () => {
     }, [response]);
 
     const navigateMain = () => {
-        joinRoom(username, room_id)
+        joinRoom(room_id,username)
     }
 
     const onChange = (e) => {

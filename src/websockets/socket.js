@@ -11,7 +11,7 @@ const createRoom = (username) => {
   if (socket) socket.emit('create_room', username )
 }
 
-const joinRoom = (username, room) => {
+const joinRoom = (room, username) => {
   if (socket) socket.emit('join_room', room, username )
 }
 
