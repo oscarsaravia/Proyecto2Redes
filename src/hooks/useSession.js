@@ -11,11 +11,13 @@ const useSession = () => {
       socket.on('room_created', (response) => {
         console.log('room_created', response, game)
         setGame((game) => {
-          return {
-            ...game,
-            room_id: response.body.room_id,
-            owner: response.body.owner,
-          }
+          if (game.room_id.length === 0) {
+            return {
+              ...game,
+              room_id: response.body.room_id,
+              owner: response.body.owner,
+            }
+          } else return game
         })
       })
       socket.on('joined_room', (res) => {
@@ -23,13 +25,15 @@ const useSession = () => {
         const { room_id, owner, players } = res.body
         const { response } = res
         setGame((game) => {
-          return {
-            ...game,
-            owner,
-            room_id,
-            players,
-            response,
-          }
+          if (game.room_id.length === 0) {
+            return {
+              ...game,
+              owner,
+              room_id,
+              players,
+              response,
+            }
+          } else return game
         })
       })
 
@@ -46,67 +50,76 @@ const useSession = () => {
 
       socket.on('game_started', (res) => {
         console.log("response",res, game)
-        const { players, next_player, next_card } = res.body
-        setGame((game) => {
-          return {
-            ...game,
-            players,
-            game_started: true,
-            next_player,
-            next_card,
-          }
-        })
+        const { players, next_player, next_card, room_id } = res.body
+          setGame((game) => {
+            if (room_id === game.room_id) {
+              return {
+                ...game,
+                players,
+                game_started: true,
+                next_player,
+                next_card,
+              }
+            } else return game
+          })
       })
 
       socket.on('next_turn', (res) => {
         console.log("next_turn",res)
-        const { next_player, last_player, players, next_card } = res.body
-        setGame((game) => {
-          return {
-            ...game,
-            next_player,
-            last_player,
-            players,
-            next_card,
-          }
-        })
+        const { next_player, last_player, players, next_card, room_id } = res.body
+          setGame((game) => {
+            if (room_id === game.room_id) {
+              return {
+                ...game,
+                next_player,
+                last_player,
+                players,
+                next_card,
+              }
+            } else return game
+          })
       })
 
       socket.on('farol', (res) => {
         console.log("farol",res)
         const { answer, telltale, accused, players, room_id } = res.body
         setGame((game) => {
-          return {
-            ...game,
-            answer,
-            telltale,
-            accused,
-            players,            
-          }
-        })
+          if (room_id === game.room_id) {
+            return {
+              ...game,
+              answer,
+              telltale,
+              accused,
+              players,            
+            }
+          } else return game
+          })
       })
 
       socket.on('game_finished', (res) => {
         console.log("game_finished",res)
         const { winner, room_id } = res.body
-        setGame((game) => {
-          return {
-            ...game,
-            winner,
-          }
-        })
+          setGame((game) => {
+            if (room_id === game.room_id) {
+              return {
+                ...game,
+                winner,
+              }
+            } else return game
+          })
       })
       
       socket.on('message_recieved', (res) => {
         console.log("message_recieved",res)
         const { chat, room_id } = res.body
-
-        setGame((game) => {
-          return {
-            ...game,
-            chat, 
-          }
-        })
+          setGame((game) => {
+            if (room_id === game.room_id) {
+              return {
+                ...game,
+                chat, 
+              }
+            } else return game
+          })
       })
     }
   }, [socket, setGame])
