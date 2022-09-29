@@ -210,3 +210,15 @@ h3{
 .control-checkbox input:checked + .control_indicator::before {
   animation-name: s-ripple-dup;
 }
+
+.tutorial {
+  font-size: 10rem;
+  position: absolute;
+  top: 0;
+  right: 2vw;
+}
+
+.tutorial:hover {
+  color: red;
+  cursor: pointer;
+}

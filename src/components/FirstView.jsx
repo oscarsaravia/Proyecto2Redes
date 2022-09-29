@@ -29,8 +29,13 @@ const FirstView = () => {
       setUsername(e.target.value)
     }
 
+    const handleInstructions = () => {
+      navigate('/instructions');
+    }
+
     return(
     <div className="App">
+        <h1 className='tutorial' onClick={ handleInstructions }>?</h1>
         <h1>Bienvenido a Va de Farol!</h1>
         <h2>Nombre</h2>
         <input onChange={onChange} type="text" placeholder="Nombre de usuario" className="css-input" />
