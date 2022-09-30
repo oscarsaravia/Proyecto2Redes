@@ -20,10 +20,10 @@ const useSession = () => {
         })
       })
       socket.on('joined_room', (res) => {
-        const { room_id, owner, players } = res.body
+        const { room_id, owner, players, username } = res.body
         const { response } = res
         setGame((game) => {
-          if (game.room_id.length === 0) {
+          if (game.room_id.length === 0 && username === game.username) {
             return {
               ...game,
               owner,
