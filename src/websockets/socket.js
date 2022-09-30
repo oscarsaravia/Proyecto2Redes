@@ -2,8 +2,8 @@ import io from 'socket.io-client'
 
 let socket
 const initiateSocket = () => {
-  socket = io('http://localhost:5001')
-  // socket = io('https://guarded-harbor-53293.herokuapp.com/')
+  // socket = io('http://localhost:5001')
+  socket = io('https://guarded-harbor-53293.herokuapp.com/')
 }
 const getSocket = () => socket
 
