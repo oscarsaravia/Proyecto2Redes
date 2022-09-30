@@ -37,7 +37,7 @@ Players follow the turn order to place cards, the cards must go in the order spe
 
 The first player to discard all their cards is the winner!
 
--> Read more at: [Instructions](https://farol-app.netlify.app/instructions)
+-> Read more at: [GAME](https://farol-app.netlify.app/) click on the question mark
 
 ## 🔩 How to run it (local)
 
@@ -77,7 +77,7 @@ This project features this tools
 
 ## Authors
 
-- **Raul Angel J** ([raulangelj](https://github.com/raulangelj))
-- **Bryann Alfaro** ([bryannalfaro](https://github.com/bryannalfaro))
-- **Donaldo Garcia** ([donaldosebas](https://github.com/donaldosebas))
-- **Oscar Saravia** ([oscarsaravia](https://github.com/oscarsaravia))
+| Raul Angel J. | Donaldo Garcia | Bryann Alfaro | Oscar Saravia |
+| :---: |:---:|:---:|:---:|
+| [![Raul Angel](https://avatars0.githubusercontent.com/u/46568595?s=200&u=c1481289dc10f8babb1bdd0853e0bcf82a213d26&v=4)](https://github.com/raulangelj)    | [![Donaldo Garcia](https://avatars1.githubusercontent.com/u/54748964?s=200&u=5e617360d13f87fa6d62022e81bab94ebf50c4e3&v=4)](https://github.com/donaldosebas)  | [![Bryan Alfaro](https://avatars0.githubusercontent.com/u/46506166?s=200&u=c1481289dc10f8babb1bdd0853e0bcf82a213d26&v=4)](https://github.com/bryannalfaro)    | [![Oscar Saravia](https://avatars0.githubusercontent.com/u/46576030?s=200&u=c1481289dc10f8babb1bdd0853e0bcf82a213d26&v=4)](https://github.com/oscarsaravia)    |
+| <a href="https://github.com/raulangelj" target="_blank">`@raulangelj`</a> | <a href="https://github.com/donaldosebas" target="_blank">`@donaldosebas`</a> | <a href="https://github.com/bryannalfaro" target="_blank">`@bryannalfaro`</a> | <a href="https://github.com/oscarsaravia" target="_blank">`@oscarsaravia`</a> |
