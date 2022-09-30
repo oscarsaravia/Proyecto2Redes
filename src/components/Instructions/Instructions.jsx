@@ -19,7 +19,7 @@ export const Instructions = () => {
       <div className="main-container">
         <h1 className='title'>¿Como se juega?</h1>
         <ol className='list'>
-          <li>Se reparten todas las cartas de una baraja española entre los jugadores.</li>
+          <li>Se reparten todas las cartas de una baraja inglesa entre los jugadores.</li>
           <li>Se elige aleatoriamente la persona que iniciara la partida</li>
           <li>En pantalla se mostrara la carta que el jugador deberia de seleccionar</li>
           <li>El jugador tiene 2 opciones, elegir de su mazo de cartas la carta que se indica, o mentir y seleccionar otra que no es</li>

@@ -1,6 +1,9 @@
 import './MainView/App.css';
 import { useNavigate} from 'react-router-dom';
 import {useState} from 'react';
+import QuizIcon from '@mui/icons-material/Quiz';
+import Fab from '@mui/material/Fab';
+
 
 const FirstView = () => {
     const [valueRoom, setValueRoom] = useState(false);
@@ -35,7 +38,10 @@ const FirstView = () => {
 
     return(
     <div className="App">
-        <h1 className='tutorial' onClick={ handleInstructions }>?</h1>
+        {/* <h1 className='tutorial' onClick={ handleInstructions }>?</h1> */}
+        <div className="tutorial">
+            <QuizIcon variant="contained" sx={{ fontSize: 100 }} onClick={ handleInstructions }/>
+        </div>
         <h1>Bienvenido a Va de Farol!</h1>
         <h2>Nombre</h2>
         <input onChange={onChange} type="text" placeholder="Nombre de usuario" className="css-input" />
