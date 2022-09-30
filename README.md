@@ -19,7 +19,7 @@ Our game app is quite easy to play. All the controls are intuitive and easy to u
 
 ### **Demo**
 
-<!-- [YouTube - Demo]() -->
+[YouTube - Demo](https://youtu.be/dwxNB2DS8a8)
 
 ## 🏆 About Va de farol
 
