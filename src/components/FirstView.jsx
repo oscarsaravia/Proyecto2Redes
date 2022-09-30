@@ -1,18 +1,20 @@
 import './MainView/App.css';
 import { useNavigate} from 'react-router-dom';
-import {useState} from 'react';
+import { useState, useEffect, useContext } from 'react'
 import QuizIcon from '@mui/icons-material/Quiz';
 import Fab from '@mui/material/Fab';
-
+import { PlayerContext } from '../Context/PlayerContext/PlayerContext'
 
 const FirstView = () => {
     const [valueRoom, setValueRoom] = useState(false);
     const [valueJoin, setValueJoin] = useState(false);
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
+    const { game, setGame } = useContext(PlayerContext)
 
     const handleEvents = () => {
       if (valueRoom) {
+        setGame({ ...game, username: username })
         navigate('/create', {
           state: {
             username,
@@ -20,6 +22,7 @@ const FirstView = () => {
         });
       }
       if (valueJoin) {
+        setGame({ ...game, username: username })
         navigate('/join',{
           state: {
             username,
