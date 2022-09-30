@@ -10,7 +10,7 @@ const useSession = () => {
     if (socket) {
       socket.on('room_created', (response) => {
         setGame((game) => {
-          if (game.room_id.length === 0) {
+          if (game.room_id.length === 0 && response.body.owner === game.username) {
             return {
               ...game,
               room_id: response.body.room_id,
