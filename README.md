@@ -5,7 +5,7 @@ Va de farol - Networks Project 2
 ## 📜 Protocol Description
 
 Read about all actions & payloads [HERE IF YOU ARE A MEMEBER OF UVG](https://docs.google.com/document/d/1ydFLZS3jXegwuDVR9brFGzKHL2En10w20EvCwYQPqvE/edit?usp=sharing)
-or [HERE IF YOU DO NOT HAVE A UVG ACCOUNT](https://github.com/oscarsaravia/Proyecto2Redes/blob/main/protocol/Protocolo%20proyecto%202%20%20-%20Redes.pdf)
+or [HERE IF YOU DO NOT HAVE A UVG ACCOUNT](https://github.com/oscarsaravia/Proyecto2Redes/blob/main/protocol/Protocolo%20proyecto%202%20-%20Redes-1.pdf)
 
 ## 🎮 Online Game
 
